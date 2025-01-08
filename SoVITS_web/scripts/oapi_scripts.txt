@@ -1,0 +1,5 @@
+oapi-codegen -generate client -o "internal/common/client/slice/openapi_client.gen.go" -package "sliceoapi" "api/openapi/slice.yml"
+oapi-codegen -generate types -o "internal/common/client/slice/openapi_types.gen.go" -package "sliceoapi" "api/openapi/slice.yml"
+
+oapi-codegen -generate types -o "internal/preprocess/ports/openapi_types.gen.go" -package "sliceoapi" "api/openapi/slice.yml"
+oapi-codegen -generate "gin-server" -o "internal/preprocess/ports/openapi_api.gen.go" -package "sliceoapi" "api/openapi/slice.yml"
