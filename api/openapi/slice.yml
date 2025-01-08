@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: slice service
+  description: slice service
+  version: 1.0.0
+servers:
+  - url: 'https://{hostname}/api'
+    variables:
+      hostname:
+        default: 127.0.0.1
+paths:
+  /preprocess/{customer_id}/slice:
+    post:
+      description: "start slice"
+      parameters:
+        - in: path
+          name: customer_id
+          schema:
+            type: string
+          required: true
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SliceRequest'
+
+      responses:
+        '200':
+          description: todo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+        default:
+          description: todo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+    SliceRequest:
+      type: object
+      required:
+        - customer_id
+        - slice_params
+      properties:
+        customer_id:
+          type: string
+        slice_params:
+          type: array
+          items:
+            $ref: '#/components/schemas/SliceParams'
+    SliceParams:
+      type: object
+      required:
+        - inputPath
+        - outputRoot
+        - threshold
+        - minLength
+        - minInterval
+        - hopSize
+        - maxSilKept
+        - xMax
+        - alpha
+        - nParts
+      properties:
+        id:
+          type: string
+        inputPath:
+          type: string
+        outputRoot:
+          type: string
+        threshold:
+          type: number
+        minLength:
+          type: integer
+          format: int32
+        minInterval:
+          type: integer
+          format: int32
+        hopSize:
+          type: integer
+          format: int32
+        maxSilKept:
+          type: integer
+          format: int32
+        xMax:
+          type: integer
+          format: int32
+        alpha:
+          type: number
+        nParts:
+          type: integer
+          format: int32
