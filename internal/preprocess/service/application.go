@@ -26,7 +26,7 @@ func newApplicationClient(ctx context.Context, serviceClient command.CommandServ
 	metric := common.MyMetric{}
 	return app.Application{
 		Commands: app.Commands{
-			Command: command.NewStartSliceHandler(ctx, serviceClient, logger, metric),
+			StartSliceCommand: command.NewStartSliceHandler(ctx, serviceClient, logger, metric),
 		},
 	}
 }
