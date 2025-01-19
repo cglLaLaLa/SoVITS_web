@@ -12,8 +12,8 @@ import (
 	"time"
 )
 
-const timeout = 10000000000 //默认10s超时
-const addr = "127.0.0.1"    //测试阶段，先写本地地址，后期全放到配置文件里
+const timeout = 10000000000    //默认10s超时
+const addr = "127.0.0.1:50051" //测试阶段，先写本地地址，后期全放到配置文件里
 
 func waitFor(addr string, timeout time.Duration) bool {
 	portAvailable := make(chan struct{})
